@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'MCWXX';
+    src: url('../fonts/MCWXXLight-25JULY.otf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'MCWXX';
+    src: url('../fonts/MCWXXRegular-25JULY.otf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'MCWXX';
+    src: url('../fonts/MCWXXMedium-25JULY.otf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'MCWXX';
+    src: url('../fonts/MCWXXBold-25JULY.otf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'MCWXX';
+    src: url('../fonts/MCWXXExtraBold-25JULY.otf');
+    font-weight: 800;
+}
+
+@font-face {
+  font-family: 'MCW XX Bold';
+  src: url('../fonts/MCWXXBold-25JULY_2.altmosprx.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/MCWXXBold-25JULY_2.altmosprx.eot@') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/MCWXXBold-25JULY_2.altmosprx.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/MCWXXBold-25JULY_2.altmosprx.woff2') format('woff2'), /* Modern Browsers */
+       url('../fonts/MCWXXBold-25JULY_2.altmosprx.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/MCWXXBold-25JULY_2.altmosprx.svg') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: 'MCW XX ExtraBold';
+  src: url('../fonts/MCWXXExtraBold-25JULY_2.altmosprx.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/MCWXXExtraBold-25JULY_2.altmosprx.eot@') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/MCWXXExtraBold-25JULY_2.altmosprx.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/MCWXXBold-25JULY_2.altmosprx.woff2') format('woff2'), /* Modern Browsers */
+       url('../fonts/MCWXXExtraBold-25JULY_2.altmosprx.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/MCWXXExtraBold-25JULY_2.altmosprx.svg') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: 'MCW XX Light';
+  src: url('../fonts/MCWXXLight-25JULY_2.altmosprx.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/MCWXXLight-25JULY_2.altmosprx.eot@') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/MCWXXLight-25JULY_2.altmosprx.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/MCWXXLight-25JULY_2.altmosprx.woff2') format('woff2'), /* Modern Browsers */
+       url('../fonts/MCWXXLight-25JULY_2.altmosprx.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/MCWXXLight-25JULY_2.altmosprx.svg') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  300;
+}
+
+@font-face {
+  font-family: 'MCW XX Medium';
+  src: url('../fonts/MCWXXMedium-25JULY_2.altmosprx.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/MCWXXMedium-25JULY_2.altmosprx.eot@') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/MCWXXMedium-25JULY_2.altmosprx.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/MCWXXMedium-25JULY_2.altmosprx.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/MCWXXMedium-25JULY_2.altmosprx.svg') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: 'MCW XX Regular';
+  src: url('../fonts/MCWXXRegular-25JULY_2.altmosprx.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/MCWXXRegular-25JULY_2.altmosprx.eot@') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/MCWXXRegular-25JULY_2.altmosprx.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/MCWXXRegular-25JULY_2.altmosprx.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/MCWXXRegular-25JULY_2.altmosprx.svg') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    src: url('../fonts/pt_sans-regular.eot');
+    src: url('../fonts/pt_sans-regular.eot@') format('embedded-opentype'),
+    url('../fonts/pt_sans-regular.woff2') format('woff2'),
+    url('../fonts/pt_sans-regular.woff') format('woff'),
+    url('../fonts/pt_sans-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}

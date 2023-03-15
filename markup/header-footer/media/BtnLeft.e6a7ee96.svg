@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <g id="ui-kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0060-Style---Icons" transform="translate(-152.000000, -240.000000)" fill="#6a6e72">
+            <g id="icon/Arrow/BtnLeft" transform="translate(152.000000, 240.000000)">
+                <path d="M14.5580583,8.55805826 C14.8021359,8.31398058 15.1978641,8.31398058 15.4419417,8.55805826 C15.6860194,8.80213594 15.6860194,9.19786406 15.4419417,9.44194174 L9,15.8838835 L2.55805826,9.44194174 C2.31398058,9.19786406 2.31398058,8.80213594 2.55805826,8.55805826 C2.80213594,8.31398058 3.19786406,8.31398058 3.44194174,8.55805826 L9,14.1161165 L14.5580583,8.55805826 Z" id="iconColor" transform="translate(9.000000, 12.129442) rotate(90.000000) translate(-9.000000, -12.129442) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

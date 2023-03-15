@@ -1,0 +1,398 @@
+// Common isIE
+function isIE() {
+  var ua = navigator.userAgent;
+  return ua.indexOf("MSIE") > -1 || ua.indexOf("Trident") > -1;
+}
+// Common uxFeedback
+function uxFeedback() {
+  if (!isIE()) {
+    (function (w, d, u, h, s) {
+      w._uxsSettings = {id: "4dp56tylnb23g4thoupjjlf3"};
+      h = d.getElementsByTagName("head")[0];
+      s = d.createElement("script");
+      s.async = 1;
+      s.src = u;
+      s.integrity = "sha384-CDm5H1Uyw4QgXcR/0G8bmieI7X7PjtKwNaZ9XsKiMJ1EORNtpR6rnAyAdJqBEf+n";
+      s.crossOrigin = "anonymous";
+      h.appendChild(s);
+    })(window, document, "https://cdn.uxfeedback.ru/3.1.0/widget.js");
+  }
+}
+
+
+
+window.scriptConfig = [
+{
+  path: ['/**'],
+  domain: [
+    'www.mos.ru',
+    'my.mos.ru', 
+    'ulk.mos.ru', 
+    'pay.mos.ru', 
+    'pgu.mos.ru', 
+    'tarif.mos.ru', 
+    '2030.mos.ru', 
+    'ngt.mos.ru', 
+    'm.mos.ru', 
+    'innoagency.ru', 
+    'vdnh.pro.pichesky.ru'
+  ],
+  func: function () {
+    (function(window, document) {
+      function getCookie(name) {
+        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return value ? value[2] : null;
+      }
+
+      function getWebVisorsNames() {
+        return Object.keys(window).filter(function (key) {
+          return key.match(/^yaCounter/) ? !!window[key]._webvisor : false;
+        });
+      }
+
+      setTimeout(function () {
+        try {
+          var visorsNames = getWebVisorsNames();
+
+          if (visorsNames.length) {
+            var collectUrl = 'https://www.mos.ru/stproxy/services/';
+            var mosId = getCookie('mos_id');
+            var pageUrl = document.location.href;
+
+            visorsNames.forEach(function (name, index) {
+              var requestBody = '"' + window[name].getClientID() + '"\t"' + mosId +
+                '"\t"' + pageUrl + '"\t"' + name + '"\t"Webvisor enabled"';
+
+              setTimeout(function () {
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('POST', collectUrl, true);
+                xhr.send(requestBody);
+              }, 500 * (index + 1));
+            });
+          }
+        } catch (e) {
+          console.warn(e);
+        }
+      }, 2000);
+    })(window, document);
+  },
+},
+{
+  domain: ['www.mos.ru'],
+  path: [
+    '/pgu/ru/app/dvm/067901/**',
+    '/pgu/ru/application/**'
+  ],
+  func: () => {
+    (function (d, u, h, s) {
+      h = d.getElementsByTagName('head')[0];
+      s = d.createElement('script');
+      s.async = 1;
+      s.src = u;
+      h.appendChild(s);
+    })(document, 'https://www.mos.ru/upload/common/das.obf.js?1649770938');
+  }
+},
+{
+  path: ['/services/pokazaniya-vodi-i-tepla/**'],
+  domain: ['www.mos.ru'],
+  func: () => {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var cookie = getCookie('mos_id');
+    window.webvisorConfig = {
+      mosUserId: cookie,
+      webvisorServiceId: '45',
+      cookie_ga: false
+    };
+    (function (d, u, h, s) {
+      h = d.getElementsByTagName('head')[0];
+      s = d.createElement('script');
+      s.async = 1;
+      s.src = u;
+      h.appendChild(s);
+    })(document, '/webvisor/record/static/js/app.js');
+  }
+},
+{
+  path: ['/arenda/**'],
+  domain: ['www.mos.ru'],
+  func: () => {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var cookie = getCookie('mos_id');
+    window.webvisorConfig = {
+      mosUserId: cookie,
+      webvisorServiceId: '48',
+      cookie_ga: false
+    };
+    (function (d, u, h, s) {
+      h = d.getElementsByTagName('head')[0];
+      s = d.createElement('script');
+      s.async = 1;
+      s.src = u;
+      h.appendChild(s);
+    })(document, '/webvisor/record/static/js/app.js');
+  }
+},
+{
+  path: ['/services/vyzov-mastera/**'],
+  domain: ['www.mos.ru'],
+  func: () => {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var cookie = getCookie('mos_id');
+    window.webvisorConfig = {
+      mosUserId: cookie,
+      webvisorServiceId: '47',
+      cookie_ga: false
+    };
+    (function (d, u, h, s) {
+      h = d.getElementsByTagName('head')[0];
+      s = d.createElement('script');
+      s.async = 1;
+      s.src = u;
+      h.appendChild(s);
+    })(document, '/webvisor/record/static/js/app.js');
+  }
+},
+{
+  path: ['/services/vyvoz/**'],
+  domain: ['www.mos.ru'],
+  func: () => {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var cookie = getCookie('mos_id');
+    window.webvisorConfig = {
+      mosUserId: cookie,
+      webvisorServiceId: '51',
+      cookie_ga: false
+    };
+    (function (d, u, h, s) {
+      h = d.getElementsByTagName('head')[0];
+      s = d.createElement('script');
+      s.async = 1;
+      s.src = u;
+      h.appendChild(s);
+    })(document, '/webvisor/record/static/js/app.js');
+  }
+},
+{
+  path: ['/services/poverka-schetchikov-vody/**'],
+  domain: ['www.mos.ru'],
+  func: () => {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var cookie = getCookie('mos_id');
+    window.webvisorConfig = {
+      mosUserId: cookie,
+      webvisorServiceId: '84',
+      cookie_ga: false
+    };
+    (function (d, u, h, s) {
+      h = d.getElementsByTagName('head')[0];
+      s = d.createElement('script');
+      s.async = 1;
+      s.src = u;
+      h.appendChild(s);
+    })(document, '/webvisor/record/static/js/app.js');
+  }
+},
+{
+  path: ['/services/zapis-k-vrachu/**'],
+  domain: ['www.mos.ru'],
+  func: () => {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var cookie = getCookie('mos_id');
+    window.webvisorConfig = {
+      mosUserId: cookie,
+      webvisorServiceId: '117',
+      cookie_ga: false
+    };
+    (function (d, u, h, s) {
+      h = d.getElementsByTagName('head')[0];
+      s = d.createElement('script');
+      s.async = 1;
+      s.src = u;
+      h.appendChild(s);
+    })(document, '/webvisor/record/static/js/app.js');
+  }
+},
+{
+  path: ['/feedback/reception/**'],
+  domain: ['www.mos.ru'],
+  func: () => {
+    function getCookie(name) {
+      var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var cookie = getCookie('mos_id');
+    window.webvisorConfig = {
+      mosUserId: cookie,
+      webvisorServiceId: '150',
+      cookie_ga: false
+    };
+    (function (d, u, h, s) {
+      h = d.getElementsByTagName('head')[0];
+      s = d.createElement('script');
+      s.async = 1;
+      s.src = u;
+      h.appendChild(s);
+    })(document, '/webvisor/record/static/js/app.js');
+  }
+},
+{
+  domain: ['my.mos.ru'],
+  path: ['/**'],
+  func: uxFeedback,
+},
+{
+  domain: ['pay.mos.ru'],
+  path: ['/mospaynew/newportal/result'],
+  func: uxFeedback,
+},
+{
+  domain: ['ulk.mos.ru'],
+  path: ['/**'],
+  func: uxFeedback,
+},
+{
+  domain: ['www.mos.ru'],
+  path: ['/**'],
+  exclude_path: [
+    '/pgu/ru/**',
+    '/appeals/**',
+    '/shtrafy/**',
+    '/visit/**',
+    '/blockchain-yarmarki/**',
+    '/zhilishniy-uchet/**',
+    '/Content/mosru-landing/**',
+    '/sportsovetnik/**',
+    '/coachregister/**',
+    '/ritual/**',
+    '/uslugi/mirovoy-sud/**',
+    '/city/projects/goodatlas/**',
+    '/city/projects/urbaneffects/**',
+    '/depr/function/tarif/**'
+  ],
+  func: uxFeedback,
+},
+{
+  path: ['/**'],
+  exclude_domain: ['ya.ru'],
+  func: function () {
+    (function(window, document) {
+      var getCookie = function (name) {
+        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return value ? value[2] : null;
+      };
+
+      var collectUrl = 'https://www.mos.ru/stproxy/navigation/';
+      var mosId = getCookie('mos_id');
+      var pageUrl = document.location.href;
+      var triesCount = 1;
+      var counter;
+
+      var trySendStats = function () {
+        counter = window.yaCounter32628510;
+
+        if (counter && counter.getClientID) {
+          var requestBody = '"' + counter.getClientID() + '"\t"' + mosId +
+            '"\t"' + pageUrl + '"\t"pageview"';
+          var xhr = new XMLHttpRequest();
+
+          xhr.withCredentials = true;
+          xhr.open('POST', collectUrl, true);
+          xhr.send(requestBody);
+        } else if (triesCount < 6) {
+          setTimeout(trySendStats, 1000 * triesCount);
+          triesCount += triesCount;
+        }
+      };
+
+      trySendStats();
+    })(window, document)
+  }
+},
+{
+  path: ['/**'],
+  exclude_domain: ['ya.ru'],
+  func: function () {
+    (function(window, document) {
+
+      function getYaCounters() {
+        return Object.keys(window).filter(function (key) {
+          return key.match(/^yaCounter/);
+        });
+      }
+
+      setTimeout(function () {
+        try {
+          var yaCounters = getYaCounters();
+
+          if (yaCounters.length) {
+            var collectUrl = 'https://www.mos.ru/stproxy/services/';
+
+            var pageUrl = document.location.href;
+
+            yaCounters.forEach(function (name, index) {
+              var requestBody = '"' + name + '"\t"' + pageUrl + '"\t"yaCounterDetected"';
+
+              setTimeout(function () {
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('POST', collectUrl, true);
+                xhr.send(requestBody);
+              }, 500 * (index + 1));
+            });
+          }
+        } catch (e) {
+          console.warn(e);
+        }
+      }, 2000);
+    })(window, document);
+  },
+},
+{
+  path: ['/shtrafy/**'],
+  domain: ['www.mos.ru'],
+  func: () => {
+    setTimeout(function () { window.dispatchEvent(new Event('resize')); }, 1500);
+  }
+},
+{
+  path: ['/mospaynew/portal/mgts'],
+  domain: ['pay.mos.ru'],
+  func: () => {
+    setTimeout(function () { window.dispatchEvent(new Event('resize')); }, 1500);
+  }
+}
+];

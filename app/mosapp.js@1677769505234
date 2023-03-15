@@ -1,0 +1,1451 @@
+/*
+ *
+ *
+ *
+ */
+angular.module('mosapp', ['pascalprecht.translate'])
+	.constant(
+		'mosconfig', {
+			'titleParams': {
+				'separator': ' / ',
+				'siteName': {
+					'ru': 'Сайт Москвы',
+					'en': 'Moscow City Web Site',
+					'cn': 'Moscow City Web Site'
+				}
+			},
+			'altParams': {
+				'ru': 'Официальный сайт Мэра Москвы',
+				'en': 'Moscow Mayor official website'
+			},
+			'domain': 'www.mos.ru', // если без протокола - его добавит js, если со слэшем в конце - его уберет js, если с двумя слэшами в конце - js уберет только последний, если ты дочитал до этих слов - лучше не трогай ничего
+			'siteLogo': { // нужно для микроразметки
+				'src': 'https://www.mos.ru/static/images/AMP/logo_mos_ru.png',
+				'width': 600,
+				'height': 60
+			},
+			// путь к папке со скриптами
+			'jsPath': '/static/js/',
+			// путь к папке со стилями
+			'cssPath': '/static/css/',
+			// путь к папке с картинками
+			'imagesPath': '/static/images/',
+			// путь к папке с файлами поддержки мультиязычности
+			'i18nPath': '/static/i18n/',
+			// путь к скрипту карты
+			'mapsLoaderPath': '/front/markup/maps/js/loader.min.js',
+			'mvsrPlayer': 'https://mvsr.mos.ru/player/assets/private-cameras/public-player.js', // LUB-705 public-player-script
+			//
+			'specialType': {
+				'types': ['person', 'calendar', 'dataset', 'advisor']
+			},
+			'searchFilters': {
+				'ru': ['common', 'services', 'project', 'news', 'article', 'calendar', 'complaint', 'document', 'government', 'media', 'person', 'static'],
+				'en': ['common', 'services', 'project', 'news', 'calendar', 'static']
+			},
+			'search': {
+				'categories': {
+					'newsfeed': {
+						'apiMod': 'newsfeed',
+						'apiKey': 'search',
+						'sort': true,
+						'filter': 'news'
+					},
+					'services': {
+						'apiMod': 'catalog',
+						'apiKey': 'search',
+						'index': ['services'],
+						'filter': 'services'
+					},
+				},
+				'newsfeedFilterTypes': [{
+					'id': 1,
+					'title': 'Новости'
+				},
+				{
+					'id': 2,
+					'title': 'Интервью'
+				},
+				{
+					'id': 7,
+					'title': 'Новости мэра'
+				},
+				{
+					'id': 8,
+					'title': 'Презентации'
+				},
+				{
+					'id': 9,
+					'title': 'Телеграммы'
+				},
+				{
+					'id': 10,
+					'title': 'Стенограммы'
+				},
+				{
+					'id': 18,
+					'title': 'Пресс-релизы'
+				}
+				]
+			},
+			'newsfeed': {
+				'entitiesPath': {
+					'article': {
+						'pagePath': 'news',
+						'additional': 'item/',
+						'ids': '%id'
+					},
+					'news': {
+						'pagePath': 'mayorNews',
+						'ids': '%sphere/%id'
+					}
+				},
+				'defaultKind': 'article'
+			},
+			'mosGovernmentId': 11491090,
+			'emergency': {
+				'current': 'original', // [original|low|off]
+				'doNotHide': true, // [true|false] true - никогда не скрывать, false - legacy, default: скрывать на время сессии, если новость прочитана
+				'path': {
+					'original': 'emergencies',
+					'low': 'video'
+				}
+			},
+			'languages': ['ru', 'en', 'cn'],
+
+			'insertionHeader': { // баннерное место в шапке для всех страниц, директива banner
+				'current': 'off', // [on|off] on - включен, любые другие значения - выключен
+				'path': 'https://www.mos.ru/widgets/side/vesna/build/index.html'
+			},
+			'mainpageInsertionTop': { // баннерное место на главной странице, директива mainpageInsertionTop
+				'current': 'off', // [on|off] on - включен, любые другие значения - выключен
+				'path': 'https://www.mos.ru/widgets/side/itogi_zimy/build/index.html'
+			},
+
+
+
+			'egipApi': {
+				'url': '//apieatlas.mos.ru/js/?version=1.5.5',
+				'key': '8327b66028b80d06812c94802b918837'
+			},
+			'2GisApi': {
+				'url': '//maps.api.2gis.ru/2.0/loader.js?pkg=full',
+				'search_url': '//catalog.api.2gis.ru/geo/search'
+			},
+			'stat': {
+				'metrika': {
+					'id': 32628510 // COUNTER_ID — номер вашего счетчика тут https://yandex.ru/support/metrika/reports/add-goals.xml
+				}
+			},
+			'mayor': {
+				'photobank': {
+					'ru': [{
+						'title': 'Избранные',
+						'id': 709270
+					},
+					{
+						'title': 'Официальные',
+						'id': 695270,
+						'active': true
+					}
+					],
+					'en': [{
+						'title': 'Favorite',
+						'id': 715270
+					},
+					{
+						'title': 'Official',
+						'id': 702270,
+						'active': true
+					}
+					]
+				}
+			},
+			'linksPath': {
+				// вебкамеры
+				'windowCams': 'http://video.dit.mos.ru/window/',
+
+				// 'departmentRub':'https://www.mos.ru/news/item/9817073', // УБРАТЬ
+				// жалобы в советнике, ссылка с кнопки карусели
+				'complaints': 'https://gorod.mos.ru/',
+				'social': {
+					'ru': {
+						'facebook': 'https://www.facebook.com/mosru.official',
+						'twitter': 'https://twitter.com/Moscow',
+						'twitter_creator': '@moscow',
+						'vk': 'http://vk.com/mos',
+						'rss': 'https://www.mos.ru/rss',
+						'instagram': 'https://www.instagram.com/mosru_official',
+						'ok': 'http://ok.ru/moscow',
+						'vkMayor': 'https://vk.com/mossobyanin'
+					},
+					'en': {
+						'facebook': 'https://www.facebook.com/moscowgov',
+						'twitter': 'https://twitter.com/moscowgov',
+						'twitter_creator': '@moscowgov',
+						'instagram': 'https://www.instagram.com/moscowgov',
+					},
+				}
+			},
+			'pagePath': { // путь к страницам разделов
+				//404
+				'page404': '/404/',
+				// начальная страница
+				'mainpage': '/index/',
+				// советник
+				'advisor': '/services/advisor/',
+				// Обратная связь
+				'feedback': '/feedback/',
+				// электронная приемная (форма ОС)
+				'reception': '/reception/',
+				//	 власть
+				'authority': '/authority/',
+				// новости
+				'news': '/news/',
+				// календарь
+				'calendar': '/afisha/', // old path
+				'afisha': '/afisha/',
+				// пульс города legacy
+				'pulse': '/news/',
+				// пресс-центр
+				'press': '/mayor/themes/',
+				//городская власть
+				'department': '/authority/structure/',
+				// схема городская власть
+				'departmentScheme': '/scheme/',
+				// программы
+				'programs': '/city/progress/programs/',
+				// страница мера
+				'mayor': '/mayor/biography/',
+				'mayorMain': '/mayor/',
+				'mayorNews': '/mayor/themes/',
+				'mayorInfographic': '/mayor/infographic/',
+				'interviews': '/mayor/interviews/',
+				'transcripts': '/mayor/transcripts/',
+				'telegrams': '/mayor/telegrams/',
+				'reviews': '/mayor/reviews/',
+				// медиа мэра
+				'media': '/mayor/media/',
+				// общие медиа
+				'mediaAll': '/media/',
+				// достижения
+				'progress': '/city/progress/result/',
+				// проекты
+				'projects': '/city/projects/',
+				// город
+				'city': '/city/progress/',
+				// Московские сезоны
+				'mos.seasons': '/city/seasons/',
+				// Московские сезоны: фестивали
+				'festivals': '/city/festivals/',
+				// схема для печати городская власть
+				'departmentSchemePrint': '/schemePrint/',
+				// поиск
+				'search': '/search/',
+				// сообщение об ошибке
+				'errorMessage': '/api/widgets/v1/json/bugreport',
+				//DEV 'errorMessage':'/static/json/error_popup_sucsess.json',
+				// единая автоматизированная система похоронной отрасли ritual
+				'ritual': '/ritual/',
+				// документы
+				'documents': '/authority/documents/',
+				// документы
+				'messages': '/authority/messages/',
+				// документы iframe
+				'documentslegacy': '/docs/',
+				// новый год - страница списка событий сразу отфильтрованная по id новый год
+				'newyear_calendar': '/newyear/calendar/14086/',
+				'newyear_calendar_category': '14086', // ID категории для календаря нового года
+				// масленница
+				'maslenica': '/maslenica/',
+				// 9 мая
+				'9may': '/city/projects/9may2016/',
+				'9may_articles_ids': '9940073,10000073,9987073,9941073,9974073,9934073,10061073,9990073,10125073,10133073', // ID статей про 9 мая
+				'9may_calendar_selected_id': '17086', // ID категории событий
+				'9may_photobank_id': '697270', // ID фотобанка для 9 мая
+
+				'conferences': '/conferences/',
+				'services': '/services/',
+				'servicesAdvisorStory': '/services/advisor/story',
+				'servicesPgu': '/pgu',
+
+				'myRegion': '/moi-raion/' // раздел "Мой район"
+			},
+			'defaultAdvisorCategory': 'root', // Категория по умолчанию для advisor
+
+			//Баннеры для страниц
+			'banners': {
+				'domain': '', // При сборке НУЖНО убирать, тогда будет братся текущий домен, при отладке можно оставить
+				'urlPath': '/api/schmetterling/static/platform/get.js', //путь запроса
+				'emergencyBanner': {
+					'ru': [{
+						'id': 41301
+					}],
+					'en': []
+				},
+				'mainPageWide': {
+					'ru': [{
+						'id': 60301
+					}],
+					'en': [{
+						'id': 61301
+					}]
+				},
+				'mainPage': {
+					'ru': [ // Если указать у баннера свой домен или путь API - он будет обращаться по ним
+						{
+							'id': 6301
+						},
+						{
+							'id': 13301
+						}
+					],
+					'en': [{
+						'id': 23301
+					},
+					{
+						'id': 24301
+					}
+					]
+				},
+				'mayorNews': {
+					'ru': [{
+						'id': 56301
+					},
+					{
+						'id': 57301
+					},
+					{
+						'id': 58301
+					}
+					]
+				},
+				'newsPage': {
+					'ru': [{
+						'id': 15301
+					},
+					{
+						'id': 16301
+					},
+					{
+						'id': 17301
+					}
+					],
+					'en': [{
+						'id': 25301
+					},
+					{
+						'id': 26301
+					},
+					{
+						'id': 70301
+					}
+					]
+				},
+				'newsPageTop': {
+					'ru': [{
+						'id': 6301
+					}],
+					'en': [{
+						'id': 49301
+					}]
+				},
+				'allNewsPage': {
+					'ru': [{
+						'id': 20301
+					},
+					{
+						'id': 21301
+					},
+					{
+						'id': 22301
+					}
+					],
+					'en': [{
+						'id': 28301
+					},
+					{
+						'id': 29301
+					},
+					{
+						'id': 30301
+					}
+					]
+				},
+				'newsPageThemes': {
+					'ru': [{
+						'id': 39301
+					},
+					{
+						'id': 38301
+					},
+					{
+						'id': 37301
+					}
+					],
+					'en': [{
+						'id': 28301
+					},
+					{
+						'id': 29301
+					},
+					{
+						'id': 30301
+					}
+					]
+				},
+				'newsPageDistricts': {
+					'ru': [{
+						'id': 36301
+					},
+					{
+						'id': 35301
+					},
+					{
+						'id': 34301
+					}
+					],
+					'en': [{
+						'id': 28301
+					},
+					{
+						'id': 29301
+					},
+					{
+						'id': 30301
+					}
+					]
+				},
+				'calendarPage': {
+					'ru': [{
+						'id': 40301
+					}],
+					'en': []
+				},
+				'calendarEventPage': {
+					'ru': [{
+						'id': 31301
+					},
+					{
+						'id': 32301
+					},
+					{
+						'id': 33301
+					}
+					],
+					'en': [{
+						'id': 50301
+					},
+					{
+						'id': 51301
+					}
+					]
+				},
+				'infographic': {
+					'ru': [{
+						'id': 42301
+					},
+					{
+						'id': 43301
+					},
+					{
+						'id': 44301
+					}
+					],
+					'en': [{
+						'id': 28301
+					},
+					{
+						'id': 29301
+					},
+					{
+						'id': 30301
+					}
+					]
+				},
+				'aboutMoscow': {
+					'ru': [],
+					'en': [{
+						'id': 45301
+					},
+					{
+						'id': 46301
+					}
+					]
+				},
+				'mosSeasons': {
+					'ru': [{
+						'id': 52301
+					}],
+					'en': []
+				},
+				'catalogPopular': {
+					'ru': [{
+						'id': 54301
+					},
+					{
+						'id': 55301
+					},
+					{
+						'id': 74301
+					}
+					],
+					'en': []
+				},
+				'wifiMain': {
+					'ru': [{
+						'id': 67301
+					},
+					{
+						'id': 68301
+					},
+					{
+						'id': 69301
+					}
+					],
+					'en': []
+				},
+				'oivMain': {
+					'ru': [{
+						'id': 71301
+					},
+					{
+						'id': 72301
+					},
+					{
+						'id': 73301
+					}
+					]
+				}
+			},
+			'conferences': { // Максимальный размер загружаемого видео-файла в Мб
+				'videoFileMaxSize': 120, // 120 - чуть больше чем 100МВ
+				'videoFileMaxSizePrint': 100 // значение для печати информации
+			},
+			'services': {
+				// Задержка перед появлением окна с формой обратной связи в миллисекундах
+				'feedbackPopupDelay': 300000,
+
+				'costPguLink': 'https://pgu.mos.ru/ru/application/charges/search/?service='
+			},
+			'restAPI': { // путь к сервисам
+				'ag': {
+					'href': 'https://ag.mos.ru/',
+
+					// Метод чтения информации о пользователе(баллов АГ)
+					'checkPoints': '/api/ag/v1/frontend/json/[lang]/account'
+					//DEV 'checkPoints': '/static/json/widgets/ag.json'
+				},
+				'mfc': { // Настройки виджета 'Мои документы'
+					'href': 'https://md.mos.ru/',
+					'content': '/static/json/widgets/mfc.json',
+					'target': '_blank' // Если не задано - _blank
+				},
+				// 'nav':{
+				// 	'nav': '/static/json/nav/[lang]/nav.json'
+				// },
+				'mosError': {
+					'page': '/api/widgets/v2/frontend/json/[lang]/errors/%code%'
+					//DEV 'page': '/static/json/api/widgets/v1/json/error_pages/%code%.json'
+				},
+				'helper': {
+					'help': '/api/widgets/v1/json/interactive_helper'
+					//DEV 'help': '/static/json/api/widgets/v1/json/interactive_helper.json'
+				},
+				'mainpage': {
+
+					'eventsPromoBricksTabs': '/static/json/mainpage/[lang]/main_events_promo_bricks_tabs.json?1677769505234'
+				},
+				'accessToken': {
+					'sessid': '/api/users/v1/json/auth/csrf_token'
+					//DEV 'sessid': '/static/json/sessid.json'
+				},
+				'captcha': {
+					// капча
+					'captchaCode': '/api/widgets/v1/json/captcha',
+					//DEV 'captchaCode': '/static/json/api/widgets/v1/json/captcha/captchaCode.json',
+					'captchaImageUrl': '/bitrix/tools/captcha.php'
+					//DEV 'captchaImageUrl': '/bitrix/tools/captcha.php'
+				},
+				'catalog': {
+					// Загрузки категорий
+					'categories': '/api/catalog/v1/frontend/json/[lang]/categories',
+					// 'categories': '/static/json/api/stats/v1/frontend/json/[lang]/catalog.json',
+
+					// Метод получения категории по идентификатору
+					'categoriesItem': '/api/catalog/v1/frontend/json/[lang]/categories/%id%',
+					//DEV 'categoriesItem': '/static/json/api/stats/v1/frontend/json/[lang]/catalog/categories_%id%.json',
+
+					// Метод получения списка популярных категорий "Единого каталога"
+					'popular': '/api/catalog/v1/frontend/json/[lang]/catalog/catalog/popular',
+					// 'popular': '/static/json/api/catalog/v1/frontend/json/catalog/catalog/popular.json',
+
+					// Метод получения списка прикрепленных категорий
+					'pinned': '/static/json/api/catalog/v1/frontend/json/catalog/catalog/pinned.json',
+
+					// Метод получения списка ЖС по идентификатору каталога
+					'advisorById': '/api/advisor/v5/frontend/json/[lang]/lifehack/catalog/%id%',
+					//DEV 'advisorById': '/static/json/api/advisor/v5/frontend/json/[lang]/lifehack/catalog/catalog_%id%.json',
+
+					// Метод получения популярных ЖС
+					'advisorPopular': '/api/advisor/v5/frontend/json/ru/lifehack/popular',
+					//DEV 'advisorPopular': '/static/json/api/advisor/v5/frontend/json/[lang]/lifehack/popular.json',
+
+					// Метод получения популярных ЖС по идентификатору
+					'advisorPopularById': '/api/advisor/v5/frontend/json/ru/lifehack/popular/%id%',
+					//DEV 'advisorPopularById': '/static/json/api/advisor/v5/frontend/json/[lang]/lifehack/popular_%id%.json',
+
+					// Метод получения списка "Услуг" по идентификатору "Единого каталога"
+					'pguById': '/api/catalog/v1/frontend/json/[lang]/catalog/pgu/%id%',
+					//DEV 'pguById': '/static/json/api/stats/v1/frontend/json/[lang]/catalog/pgu/pgu_%id%.json',
+
+					// Метод получения списка популярных "Услуг"
+					'pguPopular': '/api/catalog/v1/frontend/json/[lang]/catalog/pgu/popular',
+					// DEV 'pguPopular': '/static/json/api/stats/v1/frontend/json/[lang]/catalog/pgu/popular/pgu_popular.json',
+
+					// Метод получения списка популярных "Услуг" по идентификатору "Единого каталога"
+					'pguPopularById': '/api/catalog/v1/frontend/json/[lang]/catalog/pgu/popular/%id%',
+					//DEV 'pguPopularById': '/static/json/api/stats/v1/frontend/json/[lang]/catalog/pgu/popular/pgu_popular_%id%.json',
+
+					// Метод получения информаци по составной услуге
+					'pguParent': '/api/catalog/v1/frontend/json/ru/pgu',
+					//DEV 'pguParent': '/static/json/api/catalog/v1/frontend/json/[lang]/pgu.json',
+
+					// Метод получения списка "Информационных записей" по идентификатору "Единого каталога"
+					'infoById': '/api/catalog/v1/frontend/json/[lang]/catalog/cataloginfo/%id%',
+					//DEV 'infoById': '/static/json/api/stats/v1/frontend/json/[lang]/catalog/catalog_info/catalog_info_%id%.json',
+
+					// Метод получения списка популярных "Информационных записей"
+					'infoPopular': '/api/catalog/v1/frontend/json/[lang]/catalog/cataloginfo/popular',
+					//DEV 'infoPopular': '/static/json/api/stats/v1/frontend/json/[lang]/catalog/catalog_info/popular/catalog_info_popular.json',
+
+					// Метод получения списка популярных "Информационных записей" по идентификатору "Единого каталога"
+					'infoPopularById': '/api/catalog/v1/frontend/json/[lang]/catalog/cataloginfo/popular/%id%',
+					//DEV 'infoPopularById': '/static/json/api/stats/v1/frontend/json/[lang]/catalog/catalog_info/popular/catalog_info_popular_%id%.json',
+
+					// Метод получения информаци по составной услуге
+					'infoParent': '/api/catalog/v1/frontend/json/ru/cataloginfo',
+					//DEV 'infoParent': '/static/json/api/catalog/v1/frontend/json/[lang]/cataloginfo.json',
+
+					// Поиск данных внутри сервиса Каталог
+					'search': '/api/catalog/v1/frontend/json/[lang]/search/%text%',
+					//DEV 'search': '/static/json/api/catalog/v1/frontend/json/[lang]/search.json',
+
+					// Метод получения списка платных услуг
+					'costpgu': '/api/catalog/v1/frontend/json/[lang]/costpgu'
+					//DEV 'costpgu': '/static/json/api/catalog/v1/frontend/json/[lang]/costpgu.json'
+				},
+
+				'moscowSeasons': {
+					'seasonsContent': '/static/json/seasons/[lang]/season_content.json?1677769505234',
+					'getGalleryElements': '/static/json/seasons/[lang]/seasonGalleryElements.json?1677769505234',
+					// Метод чтения списка фестивалей
+					'festivals': '/api/projects/v1/frontend/json/[lang]/festivals',
+					//DEV 'festivals': '/static/json/api/projects/v1/frontend/json/[lang]/festivals.json',
+
+				},
+
+				'directories': { // справочники
+					'placesGroups': '/api/directories/v2/frontend/json/places/groups',
+					//DEV 'placesGroups': '/static/json/api/directories/v2/frontend/json/places/groups.json',
+
+					'placesPoints': '/api/directories/v2/frontend/json/places/points/%id%'
+					//DEV 'placesPoints': '/static/json/api/directories/v2/frontend/json/places/points.json',
+				},
+
+				'about': {
+
+					//Static
+					'aboutNav': '/static/json/aboutHistory/[lang]/nav.json?1677769505234',
+					//Static
+					'aboutHistory': '/static/json/aboutHistory/[lang]/about_content.json?1677769505234',
+					//Static
+					'aboutPlan': '/static/json/aboutHistory/[lang]/about_plan.json?1677769505234',
+					//Static
+					'aboutPlanDocuments': '/static/json/aboutHistory/about_plan_documents.json?1677769505234',
+					//Static
+					'aboutPlanLinks': '/static/json/aboutHistory/about_plan_links.json?1677769505234',
+
+					'aboutHeads': '/api/content/v1/frontend/json/[lang]/city/heads?per-page=90',
+					//DEV 'aboutHeads':  '/static/json/api/content/v1/frontend/json/ru/city/heads.json',
+
+					'aboutHeadsItem': '/api/content/v1/frontend/json/[lang]/city/heads/%id%',
+					//DEV 'aboutHeadsItem':  '/static/json/api/content/v1/frontend/json/ru/city/heads/%id%.json',
+
+					'aboutSymbolsGroup': '/api/content/v1/frontend/json/ru/city/symbols/groups',
+					//DEV 'aboutSymbolsGroup': '/static/json/api/content/v1/frontend/json/ru/city/symbols/groups.json',
+
+					'aboutSymbols': '/api/content/v1/frontend/json/ru/city/symbols',
+					//DEV 'aboutSymbols':  '/static/json/api/content/v1/frontend/json/ru/city/symbols.json',
+
+					'aboutSymbolsItem': '/api/content/v1/frontend/json/[lang]/city/symbols/%id%',
+					//DEV 'aboutSymbolsItem': '/static/json/api/content/v1/frontend/json/ru/city/symbols/%id%.json',
+
+					//Static
+					'aboutSymbolsDocuments': '/static/json/aboutHistory/about_symbols_documents.json?1677769505234',
+
+					'aboutHonorsGroup': '/api/content/v1/frontend/json/ru/city/honors/groups',
+					//DEV 'aboutHonorsGroup': '/static/json/api/content/v1/frontend/json/ru/city/honors/groups.json',
+
+					'aboutHonors': '/api/content/v1/frontend/json/ru/city/honors',
+					//DEV 'aboutHonors':  '/static/json/api/content/v1/frontend/json/ru/city/honors.json',
+
+					'aboutHonorItem': '/api/content/v1/frontend/json/[lang]/city/honors/%id%'
+					//DEV 'aboutHonorItem': '/static/json/api/content/v1/frontend/json/ru/city/honors/%id%.json'
+
+				},
+
+				'newsfeed': {
+					//nлитки в фильтpах
+					'afishaBricks': '/api/newsfeed/v4/frontend/json/[lang]/afisha',
+
+					'afishaV4Event': '/api/newsfeed/v4/frontend/json/[lang]/afisha/%id%',
+
+					'dayTimes': '/api/newsfeed/v4/frontend/json/[lang]/afisha/daytimes',
+
+					'placesTypes': '/api/newsfeed/v4/frontend/json/[lang]/afisha/place_types',
+
+					'auditory': '/api/newsfeed/v4/frontend/json/[lang]/afisha/auditories',
+					//DEV 'auditory': '/static/json/api/newsfeed/v4/frontend/json/[lang]/events/auditory.json',
+
+					// Метод получения списка новостей для “телевизора”
+					'newsForTV': '/api/newsfeed/v4/frontend/json/[lang]/articles/televisor',
+					//DEV 'newsForTV': '/static/json/api/newsfeed/v4/frontend/json/articles/televisor.json',
+
+					// Метод получения списка новостей ("Новости", "Новости мэра", "Конференция", "Интервью") для "Телевизора на главной"
+					'newsForMainpageTV': '/api/newsfeed/v4/frontend/json/[lang]/articles/televisor/main',
+					//DEV 'newsForMainpageTV': '/static/json/api/newsfeed/v4/frontend/json/[lang]/articles/televisor/main.json',
+
+					// Метод получения новости в блок "Молния"
+					'emergency': '/api/newsfeed/v4/frontend/json/[lang]/articles/important',
+					//DEV 'emergency': '/static/json/api/newsfeed/v4/frontend/json/[lang]/articles/emergency.json',
+
+					// Метод получения списка из 7 новостей для "пульса города"
+					'newsPulse': '/api/newsfeed/v4/frontend/json/[lang]/articles/tvpulse',
+					//DEV 'newsPulse': '/static/json/api/newsfeed/v4/frontend/json/articles/tvpulse.json',
+
+					// Метод получения списка из 4 новостей ("Новости", "Новости мэра", "Конференция", "Интервью") для "пульса города на главной"
+					'newsMainpagePulse': '/api/newsfeed/v4/frontend/json/[lang]/articles/tvpulse/main',
+					//DEV 'newsMainpagePulse': '/static/json/api/newsfeed/v4/frontend/json/[lang]/articles/tvpulse/main.json',
+
+					// Медиа: получить 1 медиа в блок "Медиа Мэра"
+					'mayorsMedia': '/api/newsfeed/v4/frontend/json/[lang]/press/media/mayor',
+					//DEV 'mayorsMedia': '/static/json/api/newsfeed/v4/frontend/json/[lang]/press/media/mayor.json',
+
+					'mayorNewsItem': '/api/newsfeed/v4/frontend/json/[lang]/press/news/%article_id%',
+					//DEV 'mayorNewsItem': '/static/json/api/newsfeed/v4/frontend/json/[lang]/press/news/%article_id%.json',
+
+					// Новости: сферы
+					'mainNewsList': '/api/newsfeed/v4/frontend/json/[lang]/press/news',
+					//DEV 'mainNewsList':'/static/json/press/press_main_news_list.json',
+
+					// Мэр:новостной сюжет
+					'pressStory': '/api/newsfeed/v4/frontend/json/[lang]/press/news/%id%',
+					//DEV 'pressStory':'/static/json/press/press_story.json',
+
+					// Мэр:медиа-блок для новостного сюжета
+					'pressStoryMedia': '/api/newsfeed/v4/frontend/json/[lang]/press/news/media/%id%',
+					//DEV 'pressStoryMedia':'/static/json/press/press_story_media.json',
+
+					//  Мэр:список Интервью
+					'pressInterviewsList': '/api/newsfeed/v4/frontend/json/[lang]/press/interview',
+					//DEV 'pressInterviewsList':'/static/json/press/press_interviews.json',
+
+					//  Мэр:текст одной Интервью
+					'pressInterviewsStory': '/api/newsfeed/v4/frontend/json/[lang]/press/interview/%id%',
+					//DEV 'pressInterviewsStory':'/static/json/api/newsfeed/v4/frontend/json/[lang]/press/interview/%id%.json',
+
+					// Мэр:список стенограмм
+					'pressTranscriptsList': '/api/newsfeed/v4/frontend/json/[lang]/press/transcript',
+					//DEV 'pressTranscriptsList':'/static/json/press/press_transcripts.json',
+
+					// Мэр:текст одной стенограммы
+					'pressTranscriptStory': '/api/newsfeed/v4/frontend/json/[lang]/press/transcript/%id%',
+					//DEV 'pressTranscriptStory':'/static/json/api/newsfeed/v4/frontend/json/[lang]/press/transcript/%id%.json',
+
+					// Мэр:список Телеграмм
+					'pressTelegramsList': '/api/newsfeed/v4/frontend/json/[lang]/press/telegram',
+					//DEV 'pressTelegramsList':'/static/json/press/press_telegrams.json',
+
+					// Мэр:текст одной Телеграммы
+					'pressTelegramStory': '/api/newsfeed/v4/frontend/json/[lang]/press/telegram/%id%',
+					//DEV 'pressTelegramStory':'/static/json/api/newsfeed/v4/frontend/json/[lang]/press/telegram/%id%.json',
+
+					// Мэр:список презентаций
+					'pressPresentations': '/api/newsfeed/v4/frontend/json/[lang]/press/presentation',
+					//DEV 'pressPresentations':'/static/json/press/press_presentations.json',
+
+					// Презентации: Детали
+					'pressPresentation': '/api/newsfeed/v4/frontend/json/[lang]/press/presentation/%id%',
+					//DEV 'pressPresentation': '/static/json/api/newsfeed/v4/frontend/json/[lang]/press/presentation_%id%.json',
+
+					// Мэр:список пресс-релизов
+					'pressReleasesList': '/api/newsfeed/v4/frontend/json/[lang]/press/release',
+					// 'pressReleasesList':'/static/json/press/press_releases.json',
+
+					// Мэр: текст одной прессрелиза
+					'pressReleaseStory': '/api/newsfeed/v4/frontend/json/[lang]/press/release/%id%',
+					//DEV 'pressReleaseStory':'/static/json/press/press_release_story.json',
+
+					// Инфографика: получить список
+					'pressInfographicList': '/api/newsfeed/v4/frontend/json/[lang]/infographic',
+					//DEV 'pressInfographicList': '/static/json/api/newsfeed/v4/frontend/json/[lang]/infographic/list.json',
+
+					// Инфографика: получить детали
+					'pressInfographic': '/api/newsfeed/v4/frontend/json/[lang]/infographic/%id%',
+					//DEV 'pressInfographic': '/static/json/api/newsfeed/v4/frontend/json/[lang]/infographic/%id%.json',
+
+					// Мэр: одно видео
+					'pressVideo': '/api/newsfeed/v4/frontend/json/[lang]/press/media/video/%id%',
+					//DEV 'pressVideo':'/static/json/press/press_video.json',
+
+					//  Мэр:список медиа-материалов
+					'pressMediaList': '/api/newsfeed/v4/frontend/json/[lang]/press/media',
+					//DEV 'pressMediaList':'/static/json/press/press_media_list.json',
+
+					//  Мэр:фотогалерея
+					'mediaGallery': '/api/newsfeed/v4/frontend/json/[lang]/press/media/info/%id%',
+					//DEV 'mediaGallery':'/static/json/press/press_media_info.json',
+
+					'mediaImages': '/api/newsfeed/v4/frontend/json/[lang]/press/media/gallery/%id%',
+					//DEV 'mediaImages':'/static/json/press/press_photo.json',
+
+					// Новости: сферы
+					'newsShperes': '/api/newsfeed/v4/frontend/json/[lang]/spheres',
+					//DEV 'newsShperes': '/static/json/api/newsfeed/v2/json/events/categories/pulse_calendar_categories.json',
+
+					// Метод получения списка новостей для блока "Лента новостей"
+					'newsMinor': '/api/newsfeed/v4/frontend/json/[lang]/articles',
+					//DEV 'newsMinor': '/static/json/api/newsfeed/v4/frontend/json/articles.json',
+
+					// Метод получения списка "Новости округов"
+					'newsAllArea': '/api/newsfeed/v4/frontend/json/[lang]/articles', //allarea -> alldistrict #72195
+					//DEV 'newsAllArea': '/static/json/api/newsfeed/v4/frontend/json/[lang]/articles/alldistrict.json',
+
+					// Метод получения списка новостей для блока "Новости округов" на главной новостей
+					'newsDistricts': '/api/newsfeed/v4/frontend/json/[lang]/articles/district', //area -> district #72195
+					// DEV 'newsDistricts': '/static/json/api/newsfeed/v4/frontend/json/articles/district.json',
+
+					// Список округов
+					'directories': '/api/directories/v2/frontend/json/territory/districts',
+					//DEV 'directories': '/static/json/api/directories/v2/frontend/json/territory/districts.json',
+
+					// Список категорий деятельности мэра
+					//'mainNewsCategories': '/api/newsfeed/v4/frontend/json/[lang]/press/category',
+					//DEV 'mainNewsCategories':'/static/json/press/news_categories.json',
+
+					// Список главных тем
+					'mainThemes': '/api/newsfeed/v4/frontend/json/[lang]/themes',
+					//DEV 'mainThemes': '/static/json/api/newsfeed/v4/frontend/json/[lang]/themes.json',
+
+					// список новостей в карточке департамента
+					'departmentBrickNews': '/api/newsfeed/v4/frontend/json/[lang]/articles/oiv/%id%',
+
+					// список медиа-материалов в карточке департамента
+					'departmentPresentation': '/api/newsfeed/v4/frontend/json/[lang]/press/presentation/oiv/%id%',
+					//DEV 'departmentPresentation': '/static/json/api/government/v1/json/department/presentations.json',
+
+					// список медиа-материалов в карточке департамента
+					'departmentMedia': '/api/newsfeed/v4/frontend/json/[lang]/press/media/oiv/%id%',
+					//DEV 'departmentMedia': '/static/json/press/press_media_list.json',
+
+					//Метод получения промо новостей для верхней части страницы “пульса города”
+					'promoArticle': '/api/newsfeed/v4/frontend/json/[lang]/articles/promo',
+					//DEV 'promoArticle': '/static/json/pulse/pulse_promo_article.json',
+
+					// Удалить после выката в прод LUB-4027 и LUB-4052
+					'pulseNews': '/api/newsfeed/v4/frontend/json/[lang]/articles',
+
+					// Метод получения полной информацию о статье
+					'newsArticle': '/api/newsfeed/v4/frontend/json/[lang]/articles/%article_id%',
+
+					// Метод получения списка конференций
+					'conferencesList': '/api/newsfeed/v4/frontend/json/[lang]/conferences',
+					//DEV 'conferencesList': '/static/json/api/newsfeed/v4/frontend/json/[lang]/conferences/list.json',
+
+					// Метод получения деталей конференции
+					'conferencesItem': '/api/newsfeed/v4/frontend/json/[lang]/conferences/%id%',
+					//DEV 'conferencesItem': '/static/json/api/newsfeed/v4/frontend/json/[lang]/conferences/%id%/conference.json',
+
+					// Метод получения блока "Важное/Прямой эфир"
+					'conferencesLive': '/api/newsfeed/v4/frontend/json/[lang]/conferences/live',
+					//DEV 'conferencesLive': '/static/json/api/newsfeed/v4/frontend/json/[lang]/conferences/live.json',
+
+					// Метод получения блока "Анонс"
+					'conferencesAdvert': '/api/newsfeed/v4/frontend/json/[lang]/conferences/advert',
+					//DEV 'conferencesAdvert': '/static/json/api/newsfeed/v4/frontend/json/[lang]/conferences/advert.json',
+
+					// Метод получения списка обвесов записи
+					// 'moldings': '/api/newsfeed/v4/frontend/json/[lang]/moldings/%entity%/%id%',
+					//DEV 'moldings': '/static/json/api/newsfeed/v4/frontend/json/moldings/article/%id%.json',
+
+					// Медиа: получить детали медиа
+					'mediaItem': '/api/newsfeed/v4/frontend/json/[lang]/press/media/%id%',
+					//DEV 'mediaItem': '/static/json/api/newsfeed/v4/frontend/json/[lang]/press/media/media_%id%.json',
+
+					'media_photo': '/api/newsfeed/v4/frontend/json/[lang]/press/media/photo',
+
+					'media_video': '/api/newsfeed/v4/frontend/json/[lang]/press/media/video',
+
+					// Метод поиска сервиса newsfeed, используется для поиска в отдельных категориях
+					'search': '/api/newsfeed/v4/frontend/json/[lang]/search/%text%',
+					//DEV 'search': '/static/json/api/newsfeed/v4/frontend/json/[lang]/search.json',
+					
+					// GET Метод чтения списка материалов из материал-агрегатора 
+					'materialAggregator': '/api/newsfeed/v4/frontend/json/[lang]/materials',
+					//'materialAggregator': '/static/json/api/newsfeed/v4/frontend/json/[lang]/materials.json'
+
+					//Общее медиа:список медиа-материалов
+					'mediaList': '/api/newsfeed/v4/frontend/json/[lang]/press/main_media',
+					//DEV 'mediaList':'/static/json/press/press_media_list.json',
+
+					// Общее медиа: одно видео
+					'mediaVideo': '/api/newsfeed/v4/frontend/json/[lang]/press/main_media/video/%id%',
+					//DEV 'mediaVideo':'/static/json/press/press_video.json',
+
+					// Общее медиа: детали фото
+					'mediaMainGallery': '/api/newsfeed/v4/frontend/json/[lang]/press/main_media/info/%id%',
+					//DEV 'mediaGallery':'/static/json/press/press_media_info.json',
+
+					//Общее медиа: Список фото
+					'mediaMainImages': '/api/newsfeed/v4/frontend/json/[lang]/press/main_media/gallery/%id%'
+					//DEV 'mediaImages':'/static/json/press/press_photo.json',
+
+				},
+				'assembler': {
+					'blocks': '/api/assembler/v1/frontend/json/[lang]/blocks'
+					//DEV 'blocks': '/static/json/api/assembler/v1/frontend/json/[lang]/blocks_calendar.json'
+				},
+				'moldings': {
+					'moldings': '/api/moldings/v1/frontend/json/[lang]/moldings/%id%'
+					//DEV 'moldings': '/static/json/api/moldings/v1/frontend/json/[lang]/moldings.json'
+				},
+
+				'form': { // Сервис форм, используется в конференциях
+					// Список вопросов
+					'questions': '/api/form/v1/frontend/json/ru/questions',
+					//DEV 'questions': '/static/json/api/form/v1/frontend/json/ru/questions.json',
+
+					// POST Добавление вопроса
+					'addQuestion': '/api/form/v1/frontend/json/ru/questions',
+
+					// Список мероприятий
+					'events': '/api/form/v1/frontend/json/ru/questions/events',
+
+					// Детали мероприятия
+					'event': '/api/form/v1/frontend/json/ru/questions/events/%id%'
+					//DEV 'event': '/static/json/api/form/v1/frontend/json/ru/questions/events/event_%id%.json'
+				},
+
+				'uploader': {
+					'file': '/api/uploader/v1/json/file',
+					'upload': '/api/uploader/v1/json/file/upload',
+					'create': '/api/uploader/v1/json/session?access_token=%token%',
+					'close': '/api/uploader/v1/json/session/%session_id%/close?access_token=%token%',
+					'confirm': '/api/uploader/v1/json/file/confirm',
+					'delete': '/api/uploader/v1/json/%service_id%/%group%/%filename%',
+					'list': '/api/uploader/v1/json/list'
+				},
+
+				'users': {
+					// Метод получения токена
+					'token': '/api/users/v1/backend/json/auth/token',
+
+					// Метод генерации CAPTCHA
+					'captcha': '/api/users/v1/frontend/json/captcha/'
+					//DEV 'captcha': 'http://shopartshop.com/image.php'
+				},
+
+				'photoBank': {
+					'firstPersonId': 11492093,
+					// фото-галерея
+					'photobankPerson': '/api/photobank/v1/frontend/json/media/person/%id%',
+					//DEV 'photobankPerson':'/static/json/press/press_media_person_info.json',
+
+					'photobankGallery': '/api/photobank/v1/frontend/json/media/info/%id%',
+					//DEV 'photobankGallery':'/static/json/press/press_media_info.json',
+
+					'photobankImages': '/api/photobank/v1/frontend/json/media/gallery/%id%'
+					//DEV 'photobankImages':'/static/json/press/press_photo.json'
+
+					// фото-галерея
+				},
+
+
+				'advisor': {
+					// советник
+					'servicesElectronic': '/static/json/services/services_electronic.json?1677769505234', //статика
+
+					'servicesElectronicTogether': '/static/json/services/services_electronic_together.json?1677769505234', //статика
+
+					'servicesMobile': '/static/json/services/services_mobile.json?1677769505234', //статика
+
+					'advisorTabs': '/static/json/advisor/advisor_feedback_tabs.json?1677769505234', //табы  //статика
+
+					'advisorPhones': '/static/json/advisor/advisor_feedback_phones.json?1677769505234', //телефоны и аккоpдеон  //статика
+
+					'advisorHead': '/static/json/advisor/advisor_feedback_head.json?1677769505234', //шаnка  //статика
+
+					'advisorFeedbackMail': '/static/json/advisor/advisor_feedback_mail.json?1677769505234', //вкладка 1  //статика
+
+					'advisorFeedbackMeet': '/static/json/advisor/advisor_feedback_meet.json?1677769505234', //вкладка 2  //статика
+
+
+					// Метод просмотра деталей ЖС по числовому идентификатору
+					'advisorById': '/api/advisor/v5/frontend/json/[lang]/lifehack/%id%',
+					//DEV 'advisorById': '/static/json/api/advisor/v5/frontend/json/[lang]/lifehack/%id%.json',
+
+					'advisorStoryInstruction': '/api/advisor/v5/frontend/json/[lang]/lifehack/%local_id%',
+					//DEV 'advisorStoryInstruction': '/static/json/api/advisor/v5/frontend/json/[lang]/lifehack/Zaregistrirovat__ro_denie_rebenka.json',
+
+					'advisorSimilarStories': '/api/advisor/v5/frontend/json/[lang]/lifehack/popular', // ?ids=1,2,3,4
+					// 'advisorSimilarStories': '/static/json/api/advisor/v5/frontend/json/[lang]/lifehack/popular.json',
+
+
+					//ФОРМА ОБРАТНОЙ СВЯЗИ
+					// советник - правила формы обратной связи
+
+					'advisorFeedbackTerms': '/static/json/advisor/feedbackTerms_norm.json?1677769505234', //статика
+
+					'advisorStoryPreamble': '/static/json/advisor/advisor_story_preamble.json?1677769505234', //статика
+
+					// советник - формы приемной
+					'advisorVirtualOfficeForms': '/api/reception/v1/json/feedback/submit-form/',
+					//DEV 'advisorVirtualOfficeForms': '/static/json/advisor/virtualOfficeForms/success.json',
+					//DEV 'advisorVirtualOfficeForms': '/static/json/advisor/virtualOfficeForms/answer.php',
+
+					// советник - административные округа
+					'divisionsTownships': '/api/directories/v1/json/areas/index.php?expand=districts',
+					//DEV 'divisionsTownships': '/static/json/advisor/divisionsTownships.json',
+
+					// советник - адресат формы юр. лица
+					'feedbackAddressee': '/api/government/v1/json/addressee/index.php',
+					//DEV 'feedbackAddressee': '/static/json/advisor/feedbackAddressee.json',
+
+					'advisorVirtualOfficeFileUpload': '/api/reception/v1/json/feedback/upload-file/',
+					//DEV 'advisorVirtualOfficeFileUpload': '/static/json/advisor/virtualOfficeForms/file/uploadSuccess.json',
+					'advisorVirtualOfficeFileDelete': '/api/reception/v1/json/feedback/delete-file/',
+					//DEV 'advisorVirtualOfficeFileDelete': '/static/json/advisor/virtualOfficeForms/file/deleteSuccess.json',
+
+					//Жалобы на странице инструкции ЖС
+					'advisorComplaints': '/api/care/v1/frontend/json/complaints',
+					//DEV 'advisorComplaints': '/static/json/api/care/v1/frontend/json/complaints.json',  //сервис care
+
+					//Советник - справочники
+					'advisorFeedbackData': '/static/json/advisor/advisor_feedback_data.json?1677769505234', //статика
+
+					'advisorDirectoryCatalog': '/api/directories/v2/frontend/json/contacts/categories?expand=full',
+					//DEV 'advisorDirectoryCatalog': '/static/json/advisor/directory/catalog.json', //сервис справочников
+
+					// список инструкций ЖС - полный список без ограничений для выпадашек в формировании ссылок
+
+					// категории ЖС
+					'category.root': '/api/advisor/v5/frontend/json/[lang]/category/root',
+					//DEV 'category.root': '/static/json/api/advisor/v5/frontend/json/[lang]/category/root.json',
+
+					'category.category': '/api/advisor/v5/frontend/json/[lang]/category/%local_id%',
+					//DEV 'category.category': '/static/json/api/advisor/v5/frontend/json/[lang]/category/%local_id%.json',
+
+					'category.story': '/api/advisor/v5/frontend/json/[lang]/lifehack/category/%local_id%',
+					//DEV 'category.story': '/static/json/api/advisor/v5/frontend/json/[lang]/lifehack/category/%local_id%.json',
+
+					//Список популярных ЖС
+					'popular': '/api/advisor/v5/frontend/json/[lang]/lifehack/popular'
+					//DEV 'popular': '/static/json/api/advisor/v5/frontend/json/[lang]/lifehack/popular.json'
+
+				},
+				'progress': {
+					'progressConstStory': '/static/json/progress/[lang]/progress_%story_id%.json?1677769505234',
+					'progressStory': '/static/json/progress/[lang]/progress_%story_id%.json?1677769505234',
+
+					'progressRatesConstStory': '/static/json/progress/[lang]/progress_rates_%story_id%.json?1677769505234',
+					'progressRatesStory': '/static/json/progress/[lang]/progress_rates_%story_id%.json?1677769505234',
+
+					'progressDataConstStory': '/static/json/progress/[lang]/progress_data_%story_id%.json?1677769505234',
+					'progressDataStory': '/static/json/progress/[lang]/progress_data_%story_id%.json?1677769505234',
+
+					'progressFutureConstStory': '/static/json/progress/[lang]/progress_future_%story_id%.json?1677769505234',
+					'progressFutureStory': '/static/json/progress/[lang]/progress_future_%story_id%.json?1677769505234',
+
+					'progressData': '/static/json/progress/[lang]/progress_main_data.json?1677769505234',
+					'progressFuture': '/static/json/progress/[lang]/progress_main_future.json?1677769505234',
+					'progressMain': '/static/json/progress/[lang]/progress_main_result.json?1677769505234',
+					'progressRates': '/static/json/progress/[lang]/progress_main_rates.json?1677769505234'
+				},
+				'programs': {
+
+					'programsMain': '/api/content/v1/frontend/json/[lang]/programs/categories/',
+					//DEV 'programsMain': '/static/json/api/content/v1/json/programs/categories/programs.json',
+
+					'programsTitle': '/static/json/programs/[lang]/programsTitle.json?1677769505234',
+
+					'programsAll': '/api/content/v1/frontend/json/[lang]/programs/statistics/',
+					//DEV 'programsAll': '/static/json/api/content/v1/json/programs/statistics/programsAll.json',
+
+					'programsPictures': '/static/json/programs/programs_pictures.json?1677769505234',
+
+					'programsPicturesTitle': '/static/json/programs/programs_pictures_title.json?1677769505234',
+
+					'programsPicturesLookingMore': '/static/json/programs/programs_pictures_lookingmore.json?1677769505234',
+
+					'programsPicturesDescription': '/static/json/programs/programs_pictures_description.json?1677769505234',
+
+					'picturesEvents': '/static/json/programs/programs_pictures_events.json?1677769505234',
+
+					'programsPicturesPhotochronic': '/static/json/programs/programs_pictures_photochronic.json?1677769505234',
+
+					'programsCityDetails': '/static/json/programs/programs_city_details.json?1677769505234',
+
+					'programsSphere': '/static/json/programs/programs_sphere.json?1677769505234',
+
+					'programsSphereTitle': '/static/json/programs/programs_sphere_title.json?1677769505234',
+
+					'programsSphereInstructions': '/static/json/programs/programs_sphere_instructions.json?1677769505234',
+
+					'programsSphereMore': '/static/json/programs/programs_sphere_more.json?1677769505234',
+
+					'programsSphereTimeline': '/static/json/programs/programs_sphere_timeline.json?1677769505234',
+
+					//Получение категорий и подкатегорий для построения Меню
+					'defProgramsMenuCategories': '/api/content/v1/frontend/json/[lang]/programs/categories/%cat_id%',
+					//DEV 'defProgramsMenuCategories': '/static/json/api/content/v1/json/programs/categories/%cat_id%.json',
+
+					'defProgramsCategoriesTimeline': '/api/content/v1/frontend/json/[lang]/programs/categories/%cat_id%/timelines',
+					//DEV 'defProgramsCategoriesTimeline': '/static/json/api/content/v1/json/programs/categories/%cat_id%/timelines.json',
+
+					'programsMenuCategories': '/api/content/v1/frontend/json/[lang]/programs/categories/%cat_id%',
+					//DEV 'programsMenuCategories': '/static/json/api/content/v1/json/programs/categories/%cat_id%.json',
+
+					'programsCategoriesTimeline': '/api/content/v1/frontend/json/[lang]/programs/categories/%cat_id%/timelines'
+					//DEV 'programsCategoriesTimeline': '/static/json/api/content/v1/json/programs/categories/%cat_id%/timelines.json'
+
+				},
+				'services': {
+					// баннер-карусель городских услуг
+					'servicesPromo': '/api/bx/v1/json/services_promo.php',
+					//DEV 'servicesPromo':'/static/json/mainpage/main_services_promo_banner.json',
+
+					// services widget for main page:
+					'servicesCarousel': '/static/json/mainpage/main_services_carousel.json?1677769505234',
+
+					// carousel
+					'servicesWidgetCarousel': '/static/json/mainpage/main_services_widget_carousel.json?1677769505234',
+
+					// услуги
+					'servicesWidgetServices': '/static/json/mainpage/main_services_widget_services.json?1677769505234',
+					'servicesWidgetServices_v2': '/static/json/mainpage/main_services_widget_services_v2.json?1677769505234',
+
+					// жалобы
+					'servicesWidgetComplaints': '/static/json/mainpage/main_services_widget_complaints.json?1677769505234',
+					'servicesWidgetComplaints_v2': '/static/json/mainpage/main_services_widget_complaints_v2.json?1677769505234',
+
+					// мнения
+					'servicesWidgetOpinions': '/static/json/mainpage/main_services_widget_opinions.json?1677769505234',
+
+					'servicesWidgetNews': '/static/json/mainpage/main_services_widget_news.json?1677769505234'
+				},
+				'projects': {
+					'projectsMain': '/api/projects/v1/frontend/json/[lang]/projects?sort=-sort',
+					//DEV 'projectsMain':'/static/json/api/projects/v1/frontend/json/[lang]/projects.json',
+					'projectSpecDetail': '/api/projects/v1/frontend/json/[lang]/projects/%id%',
+					'festivalDetail': '/api/projects/v1/frontend/json/[lang]/festivals/%id%'
+				},
+				'programms': {
+					// карусель списка городских программ
+					'programmsCarousel': '/static/json/mainpage/[lang]/main_programms_carousel.json?1677769505234'
+				},
+				// раздел "пресс-центр"
+				'press': {
+					// список обзоров прессы
+					'pressReviewsList': '/static/json/press/press_reviews_list.json?1677769505234',
+					// текст одной обзора прессы
+					'pressReviewStory': '/static/json/press/press_review_story.json?1677769505234',
+					//прессы по теме
+					'pressReviewsStory': '/static/json/press/press_reviews_story.json?1677769505234'
+				},
+				// раздел "результаты поиска"
+				'search': {
+					// результаты поиска
+					'searchResultsList': '/api/search/v4/frontend/json/[lang]/search/%text%', // v4 for skip_stat support
+					//DEV 'searchResultsList': '/static/json/api/search/v3/frontend/json/[lang]/search/search.json', // text?index[]=&page=
+
+					'searchOtherSitesIframe': '//search.mos.ru/?searchid=1942190&web=0&hid=2349&tpif=&iss=N&form_hash=abfa856405e64dca904022d9d5806e7f&text=', //поиск по евп
+					//DEV 'searchOtherSitesIframe': '//search.mos.ru/?searchid=1942190&web=0&host=culture.zaitseva.dev.mosru.notamedia.ru&hid=2349&ref_url=http%3A%2F%2Fculture.zaitseva.dev.mosru.notamedia.ru%2F&tpif=&iss=N&form_hash=abfa856405e64dca904022d9d5806e7f&text=',
+
+					// aвтокомплит
+					'searchPrfurl': '/static/json/search/autocomplete_prefetch_example.json?1677769505234',
+
+					// aвтокомплит
+					'searchRemurl': '/api/search/v3/frontend/json/[lang]/hints/%QUERY',
+					//DEV 'searchRemurl':'/static/json/api/search/v3/frontend/json/[lang]/hints/autocomplete_remote_example.json?%QUERY',
+
+				},
+				'mayor': {
+					'departmentPersonOne': '/static/json/department/[lang]/department_person_first.json?1677769505234'
+				},
+
+				'maslenica': {
+
+					'maslenicaFilter': '/static/json/maslenitsa/maslenitsa_filter.json?1677769505234',
+
+					'maslenicaSovet': '/static/json/maslenitsa/sovet.json?1677769505234',
+
+					'maslenicaPromo': '/static/json/maslenitsa/maslenitsa_preamble.json?1677769505234',
+
+				},
+				// данные для "Городская власть"
+				'department': {
+
+					// Список департаментов
+					'departmentsList': '/api/government/v1/json/department/list.php',
+					//DEV 'departmentsList': '/static/json/api/government/v1/json/department/list.json',
+
+					'departmentIncome': '/static/json/department/department_income.json?1677769505234', // static
+
+					'departmentDocsItems': '/api/government/v1/json/department/documents_items.php',
+					//DEV 'departmentDocsItems': '/static/json/api/government/v1/json/department/documents_items.json',
+
+					'departmentDocCats': '/api/government/v1/json/department/documents_categories.php',
+					//DEV 'departmentDocCats': '/static/json/api/government/v1/json/department/documents_categories.json',
+
+					'departmentDetail': '/api/government/v1/json/department/detail.php', // departmenId прилетит в запросе
+					//DEV 'departmentDetail': '/static/json/api/government/v1/json/department/detail.json',
+
+					'departmentOrgStructure': '/api/government/v1/json/department/org_structure.php', // departmenId прилетит в запросе
+					// структура в карточке oiv
+					//DEV 'departmentOrgStructure': '/static/json/api/government/v1/json/department/org_structure.json',
+
+					'departmentSub': '/api/government/v1/json/suborganizations/%id%',
+					//DEV 'departmentSub': '/static/json/api/government/v1/json/suborganizations/1.json?id=%id%',
+
+					'departmentAdditionalData': '/api/government/v1/json/department/additional_data.php',
+					//DEV 'departmentAdditionalData': '/static/json/api/government/v1/json/department/additional_data.json',
+
+					// Персона – детали https://gitlab.mos-team.ru/mos/docs/blob/master/services/government/api/v1/json/persons/detail.md
+					'personsDetail': '/api/government/v1/json/persons/detail.php?personId=%id%',
+					//DEV 'personsDetail': '/static/json/api/government/v1/json/persons/person_%id%.json',
+
+					'departmentLeader': '/api/government/v1/json/department/leader.php', // в query приедет ?person=1234456
+					//DEV 'departmentLeader': '/static/json/api/government/v1/json/department/leader.json',
+
+					'departmentDocs': '/api/government/v1/json/department/documents.php',
+					//DEV 'departmentDocs': '/static/json/api/government/v1/json/department/documents.json',
+
+					// промо-карусель деятельности
+					'departmentActivityPromo': '/api/news/v1/json/null.json',
+					//DEV 'departmentActivityPromo':'/static/json/department/main_important_news_banner.json',
+
+					// список новостей для деятельности
+					'departmentActivityList': '/api/news/v1/json/press_main_news_list.php',
+					//DEV 'departmentActivityList': '/static/json/department/department_activity_list.json',
+
+					// список категорий деятельности
+					'departmentActivityCategories': '/api/news/v1/json/news_categories.php',
+					//DEV 'departmentActivityCategories':'/static/json/department/department_activity_categories.json',
+
+					// новостной сюжет деятельности
+					'departmentActivityStory': '/api/news/v1/json/stories/press_story.php',
+					//DEV 'departmentActivityStory':'/static/json/department/department_activity_story.json',
+
+					// медиа-блок для новостного сюжета
+					'departmentActivityStoryMedia': '/api/news/v1/json/stories/press_story_media.php',
+					//DEV 'departmentActivityStoryMedia':'/static/json/department/department_activity_story_media.json',
+
+					'departmentPersonList': '/api/government/v1/json/persons/detail.php',
+					//DEV 'departmentPersonList': '/static/json/department/department_person_list_full.json',
+
+					'departmentStructureList': '/api/government/v1/json/department/list.php',
+					//DEV 'departmentStructureList': '/static/json/department/department_structure_list.json',
+
+					'departmentArchive': '/api/documents/v1/json/discussion/discussion_list.php',
+					//DEV 'departmentArchive': '/static/json/department/department_archive.json',
+
+					'departmentDocuments': '/api/documents/v1/json/list.php',
+					//DEV 'departmentDocuments': '/static/json/department/department_documents.json',
+
+					'departmentDocument': '/api/documents/v1/json/detail.php',
+					//DEV 'departmentDocument': '/static/json/department/department_document.json',
+
+					'departmentFeedbackDocuments': '/api/documents/v2/frontend/json/ru/documents',
+
+					'departmentFeedbackDocument': '/api/documents/v2/frontend/json/ru/documents/%id%',
+
+					'documentProject': '/api/documents/v1/json/projects/detail.php',
+					//DEV 'documentProject': '/static/json/department/document_project.json',
+
+					'departmentDocumentTypes': '/api/documents/v1/json/types.php',
+					//DEV 'departmentDocumentTypes': '/static/json/department/department_document_types.json',
+
+					'documentsDiscussionTopics': '/api/documents/v1/json/discussion/discussions.php',
+					//DEV 'documentsDiscussionTopics': '/static/json/api/documents/v1/json/discussion/discussions.json',
+
+					'documentsDiscussionComments': '/api/documents/v1/json/discussion/comments.php',
+					//DEV 'documentsDiscussionComments': '/static/json/api/documents/v1/json/discussion/comments.json',
+
+					'departmentScheme': '/api/government/v1/json/scheme/',
+					//DEV 'departmentScheme': '/static/json/department/department_person_scheme.json',
+
+					'departmentPrograms': '/static/json/department/department_programs.json?1677769505234',
+
+					'departmentProjects': '/api/government/v1/json/department/projects.php',
+					//DEV 'departmentProjects': '/static/json/department/department_projects.json',
+
+					'departmentActivitiesList': '/api/government/v1/json/department/activities_list.php',
+					//DEV 'departmentActivitiesList': '/static/json/department/department_activities_list.json',
+
+					'departmentPersonBanner': '/api/government/v1/json/persons/detail.php',
+					//DEV 'departmentPersonBanner': '/static/json/department/department_person_list_full.json',
+
+					'departmentOrganizationList': '/api/government/v1/json/department/org_structure.php',
+					//DEV 'departmentOrganizationList': '/static/json/department/department_organization_list.json?departmentId=%departmentId%',
+
+					'departmentSubOrganizations': '/api/government/v1/json/suborganizations/%id%',
+					//DEV 'departmentSubOrganizations': '/static/json/department/department_subordinate_organizations.json?departmentId=%id%',
+
+					'documentsProjectsListActive': '/api/documents/v1/json/projects/list.php',
+					//DEV 'documentsProjectsListActive': '/static/json/department/department_documents_projects_list_active.json',
+
+					'documentsProjectsListArchive': '/api/documents/v1/json/projects/list_archive.php',
+					//DEV 'documentsProjectsListArchive': '/static/json/department/department_documents_projects_list_archive.json',
+
+					'departmentCard': '/static/json/department/department_card.json?departmentId=%id%',
+					//NIK 'departmentCard': '/static/json/department/department_card.json?departmentId=%id%',
+
+					'departmentViewNews': '',
+
+					'departmentDocumentsStructure': '/api/government/v1/json/department/documents.php',
+					//DEV 'departmentDocumentsStructure': '/static/json/department/department_documents_structure.json?departmentId=%id%',
+
+					'departmentDocumentsFilter': '/api/government/v1/json/department/documents.php?type=%type%&content=%content%&dateFrom=%dateFrom%&dateTo=%dateTo%&number=%number%',
+					//DEV 'departmentDocumentsFilter': '/static/json/department/department_documents_filter.json?type=%type%&content=%content%&dateFrom=%dateFrom%&dateTo=%dateTo%&number=%number%',
+
+					'departmentAdditionalInformation': '/api/government/v1/json/department/additional_data.php?departmentId=%id%',
+					//DEV 'departmentAdditionalInformation': '/static/json/department/department_additional_information.json?departmentId=%id%',
+
+					'departmentAntiCorruption': '',
+
+					'departmentDistricts': '/static/json/department/department_districts.json?1677769505234',
+
+					'departmentDistrict': '/static/json/department/department_districts/%id%.json?1677769505234',
+
+					'departmentAreas': '/static/json/department/department_districts/%id%_areas.json?1677769505234',
+
+					'departmentNews': '/static/json/department/department_pulse_news.json?1677769505234',
+
+					'departmentInStructure': '/api/government/v1/json/department/persons.php'
+					//DEV 'departmentInStructure': '/static/json/department/department-in-structure.json?id=%id%'
+				},
+				'images': {
+					'imageDiscussion': '/api/documents/v1/json/discussion/image.php'
+					//DEV 'imageDiscussion': '/static/json/images/image.json'
+				},
+				'comments': {
+					'commentsDiscussion': '/api/documents/v1/json/discussion/comments.php'
+					//DEV 'commentsDiscussion': '/static/json/comments/comment.json'
+				},
+				'attachs': {
+					'attachsDiscussion': '/api/documents/v1/json/discussion/attachments.php'
+					//DEV 'attachsDiscussion': '/static/json/api/documents/v1/json/discussion/attachments.json'
+				},
+				'pulse': {
+
+					'pulseInstagram': '/api/widgets/v1/json/instagram',
+					//DEV 'pulseInstagram': '/static/json/pulse/pulse_instagram.json',
+				},
+				'9may': {
+					'9mayMain': '/static/json/9may/9may_main.json?1677769505234', // static
+
+					'9mayHistoryOfParades': '/static/json/9may/9may_history_of_parades.json?1677769505234', // static
+
+					'9mayBitva': '/static/json/9may/9may_bitva_longread.json?1677769505234', // static
+
+					'9mayMaskirovka': '/static/json/9may/9may_maskirovka_longread.json?1677769505234', // static
+
+					'9mayMainFooter': '/static/json/9may/9may_main_footer.json?1677769505234', // static
+
+					'9mayMainSchedule': '/static/json/9may/9may_main_schedule.json?1677769505234',
+
+					'9mayMap': '/static/json/9may/map/9may_map.json?1677769505234',
+
+					'9mayMapClosedRoad': '/static/json/9may/map/9may_map_closed_road.json?1677769505234',
+
+					'9mayMapMenu': '/api/directories/v2/frontend/json/places/groups',
+					//DEV '9mayMapMenu': '/static/json/9may/map/9may_map_menu.json',
+
+					'9mayMapPoint': '/api/directories/v2/frontend/json/places/points/%id%',
+					//DEV '9mayMapPoint': '/static/json/9may/map/9may_map_point.json',
+
+					'9mayHistoryTimeline': '/static/json/9may/9may_main_history.json?1677769505234'
+				},
+				'care': {
+					// POST Создание обратной связи
+					'feedback': '/api/care/v1/frontend/json/feedback/%type%'
+				},
+				'ehd': {
+					'getData': '/api/ehd/catalog/get/',
+					'countData': '/api/ehd/catalog/count/'
+				},
+				'opendata': {
+					// Метод получения деталей набора данных
+					'datasets': '/api/opendata/v1/frontend/json/[lang]/datasets/%id%'
+					//DEV 'datasets': '/static/json/api/opendata/v1/frontend/json/[lang]/datasets/id.json'
+				},
+				'structure': {
+					// Список учреждений
+					'institutions': '/api/structure/v1/frontend/json/[lang]/institutions',
+
+					// Информация об учреждении
+					'institution': '/api/structure/v1/frontend/json/[lang]/institutions/%id%',
+
+					// Список персон
+					'persons': '/api/structure/v1/frontend/json/[lang]/persons',
+
+					// Информация о персоне
+					'person': '/api/structure/v1/frontend/json/[lang]/persons/%id%',
+					//DEV 'person': '/static/json/api/structure/v1/frontend/json/[lang]/persons/id.json',
+
+					// Список должностей
+					'posts': '/api/structure/v1/frontend/json/[lang]/posts',
+					//DEV 'posts': '/static/json/api/structure/v1/frontend/json/[lang]/posts.json',
+
+					// Информация о должности
+					'post': '/api/structure/v1/frontend/json/[lang]/posts/%id%',
+
+					// Список узлов структуры
+					'frame': '/api/structure/v1/frontend/json/[lang]/frame',
+					//DEV 'frame': '/static/json/api/structure/v1/frontend/json/[lang]/frame.json',
+
+					'scheme': '/api/structure/v1/frontend/json/[lang]/scheme/2693?expand=relationships',
+					//DEV 'scheme': '/static/json/api/structure/v1/frontend/json/[lang]/scheme.json',
+
+					// Организационная структура учреждения из персон
+					'institutionPersons': '/api/structure/v1/frontend/json/[lang]/institutions/%institution_id%/persons'
+				},
+				'oiv': {
+					'news': '/api/newsfeed/v4/frontend/json/[lang]/articles',
+					'department': '/api/government/v1/json/department/detail.php?departmentId=%id%',
+					//https://gitlab.mos-team.ru/mos-docs/docs/blob/master/services/government/api/v1/json/department/org_structure.md
+					'structure': '/api/government/v1/json/department/org_structure.php?departmentId=%id%',
+
+					'detail': '/api/government/v1/json/department/detail.php?departmentId=%id%',
+					//https://gitlab.mos-team.ru/mos-docs/docs/blob/master/services/government/api/v1/json/department/leader.md
+					'leader': '/api/government/v1/json/department/leader.php?person=%id%',
+
+					'documents': '/api/government/v1/json/department/documents_items.php',
+					'documentsCategories': '/api/government/v1/json/department/documents_categories.php',
+					'additionalData': '/api/government/v1/json/department/additional_data.php',
+					//API URL https://gitlab.mos-team.ru/mos-docs/docs/blob/master/services/government/api/v1/json/persons/detail.md
+					'personCard': '/api/government/v1/json/persons/detail.php',
+					//API URL https://gitlab.mos-team.ru/mos-docs/docs/blob/master/services/catalog/api/v1/frontend/json/%5Blang%5D/pgu.GET.md
+					'pgu': '/api/catalog/v1/frontend/json/ru/pgu?expand=urls',
+
+					'institutionsList': '/api/structure/v1/frontend/json/ru/persons/%personId%?fields=id&expand=posts',
+					'institution': '/api/structure/v1/frontend/json/ru/institutions/%id%'
+				},
+
+				'moi-raion': {
+					'districts': '/api/moi-raion/v1/districts'
+				}
+			}
+		}
+	);

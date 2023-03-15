@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>max_hover</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="kit" transform="translate(-522.000000, -118.000000)" fill="#E7ECF0">
+            <g id="max_hover" transform="translate(522.000000, 118.000000)">
+                <path d="M1,20 L7,20 L7,17.2325581 L2.76744186,17.2325581 L2.76744186,13 L0,13 L0,19 L-1.11022302e-16,19 C4.47140469e-16,19.5522847 0.44771525,20 1,20 Z" id="Combined-Shape"></path>
+                <path d="M14,20 L20,20 L20,17.2325581 L15.7674419,17.2325581 L15.7674419,13 L13,13 L13,19 L13,19 C13,19.5522847 13.4477153,20 14,20 Z" id="Combined-Shape" transform="translate(16.500000, 16.500000) scale(-1, 1) translate(-16.500000, -16.500000) "></path>
+                <path d="M1,7 L7,7 L7,4.23255814 L2.76744186,4.23255814 L2.76744186,0 L0,0 L0,6 L-1.11022302e-16,6 C4.47140469e-16,6.55228475 0.44771525,7 1,7 Z" id="Combined-Shape" transform="translate(3.500000, 3.500000) scale(1, -1) translate(-3.500000, -3.500000) "></path>
+                <path d="M14,7 L20,7 L20,4.23255814 L15.7674419,4.23255814 L15.7674419,0 L13,0 L13,6 L13,6 C13,6.55228475 13.4477153,7 14,7 Z" id="Combined-Shape" transform="translate(16.500000, 3.500000) scale(-1, -1) translate(-16.500000, -3.500000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

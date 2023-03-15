@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 57.1 (101010) - https://sketch.com -->
+    <title>BAF03CC0-2EA3-43C5-9D19-822432FE9156</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Widgets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ОИВ-с-гербом" transform="translate(-104.000000, -3270.000000)" fill="#6A6E72">
+            <g id="icon/Mail" transform="translate(104.000000, 3270.000000)">
+                <path d="M16,6 C17.1045695,6 18,6.8954305 18,8 L18,16 C18,17.1045695 17.1045695,18 16,18 L4,18 C2.8954305,18 2,17.1045695 2,16 L2,8 C2,6.8954305 2.8954305,6 4,6 L16,6 Z M16.75,9.446 L10.3632739,14.0085834 C10.1459629,14.1638055 9.85403708,14.1638055 9.63672613,14.0085834 L3.25,9.446 L3.25,16 C3.25,16.4142136 3.58578644,16.75 4,16.75 L16,16.75 C16.4142136,16.75 16.75,16.4142136 16.75,16 L16.75,9.446 Z M16,7.25 L4,7.25 C3.61488968,7.25 3.29757284,7.54025843 3.25488373,7.91394105 L10,12.7319352 L16.744,7.914 L16.7431534,7.89822944 C16.693491,7.53215388 16.3796958,7.25 16,7.25 Z" id="iconColor"></path>
+            </g>
+        </g>
+    </g>
+</svg>

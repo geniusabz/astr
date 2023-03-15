@@ -1,0 +1,8 @@
+window.chatCfg = [
+  {
+    path: '/**',
+    newchat: 'true',
+    group: 'https://chat.mos.ru/client/scripts/script.js?yaCounter=32628510',
+    exclude: ['/', '/en/**', '/cn/**', '/moi-raion/**', '/map/**', '/new-map/**', '/covid-19/**', '/city/projects/covid-19/**', '/depr/function/tarif/**', '/privacypolicy/socmon/', '/progulka/', '/pgu/ru/app/cikrf/konstituciya/**'],
+  }
+];

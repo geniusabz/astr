@@ -1,0 +1,398 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 451px) {
+
+    .qa .qa-card-head .qa-head-icon-container {
+        display: none;
+    }
+
+    .qa .qa-card-content {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .qa .qa-card.qa-related-links .qa-card-head h2 {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .qa.qa-instruction {
+        padding: 3px 30px 24px 30px;
+    }
+
+    .qa .qa-content:last-child {
+        margin-bottom: 0;
+    }
+
+    .qa .qa-head {
+        margin: 0;
+        padding-right: 75px;
+    }
+
+    .qa .qa-head .qa-sticker {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 32px;
+    }
+
+    .qa .qa-subtitle {
+        margin-bottom: 24px;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .qa .qa-menu {
+        display: block;
+    }
+
+    .qa .qa-service-link .qa-button {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        font-family: 'MCW XX Regular', sans-serif;;
+    }
+
+    .qa .qa-card,
+    .qa .qa-card.qa-related-links {
+        margin-bottom: 24px;
+        border: 1px solid #d6dade;
+        border-radius: 2px;
+    }
+    body .qa .qa-card.qa-related-links {
+        margin-bottom: 0;
+    }
+
+    .qa .qa-card .qa-card-head {
+        padding: 34px 24px 24px 40px;
+
+    }
+
+    .qa .qa-card .qa-card-head h2 {
+        font-size: 22px;
+        line-height: 32px;
+    }
+
+    .qa .qa-card .qa-card-head .qa-head-icon-container {
+        display: none;
+    }
+
+    .qa .qa-card .qa-card-content {
+        padding: 0 24px 40px 40px;
+    }
+
+    .qa .qa-content a.qa-service-link {
+        display: none;
+        margin: 24px 0;
+    }
+
+    .qa .qa-content a.qa-service-link .qa-button {
+        width: 100%;
+    }
+
+    /* bonus blocks order */
+    .qa .qa-bonus-block.qa-social {
+        order: 1;
+    }
+    .qa .qa-bonus-block.qa-quiz {
+        order: 2;
+    }
+    /* /bonus blocks order */
+
+    /* bonus blocks */
+    .qa .qa-bonus-blocks-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .qa .qa-bonus-block {
+        width: 100%;
+    }
+    .qa .qa-bonus-block.qa-service-link {
+        display: none;
+    }
+    .qa .qa-bonus-block-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: left;
+        height: 129px;
+        min-height: 129px;
+        border: 1px solid #d6dade;
+        border-radius: 2px;
+        padding: 24px 40px 24px 40px;
+        margin: 0 0 24px 0;
+        background-color: #ffffff;
+    }
+    .qa .qa-bonus-block.qa-quiz .qa-heart {
+        margin-right: 6px;
+        color: #C72724;
+        opacity: inherit;
+    }
+    .qa .qa-quiz .qa-quiz-step-1,
+    .qa .qa-quiz .qa-quiz-step-2,
+    .qa .qa-quiz .qa-quiz-step-3,
+    .qa .qa-quiz .qa-quiz-step-4 {
+        margin: 0;
+    }
+    .qa .qa-bonus-block-controls {
+        display: inline-block;
+        width: auto;
+        margin: 0;
+        white-space: nowrap;
+    }
+    .qa .qa-bonus-block.qa-quiz .qa-button {
+        width: 60px;
+        min-width: initial;
+        padding: 10px 0;
+        font-size: 16px;
+        line-height: 24px;
+        border-radius: 4px;
+    }
+    .qa .qa-bonus-block.qa-quiz .qa-button:first-child {
+        margin-right: 12px;
+    }
+    .qa .qa-bonus-block.qa-social .qa-button {
+        display: inline-block;
+        width: auto;
+        min-width: 120px;
+        padding: 10px 0;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        font-family: 'MCW XX Regular', sans-serif;
+        border: 1px solid #c72724;
+        border-radius: 4px;
+        color: #c72724;
+    }
+    .qa .qa-bonus-block.qa-social .qa-button:hover {
+        background-color: #ffd2d1;
+    }
+    .qa .qa-quiz .qa-quiz-text,
+    .qa .qa-social .qa-social-text {
+        text-align: left;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        font-family: 'MCW XX Regular', sans-serif;
+    }
+    /* /bonus blocks */
+
+}
+
+@media (min-width: 768px) and (max-width: 825px) {
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social .qa-bonus-block-content,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-bonus-block-content {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz {
+        width: 100%;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block-controls {
+        margin-left: 19px;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-select-box {
+        width: 200px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 825px) and (orientation: landscape) {
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social .qa-bonus-block-content,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-bonus-block-content {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz {
+        width: 100%;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block-controls {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-select-box {
+        width: 200px;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+
+    .qa .qa-menu {
+        width: 310px;
+    }
+
+    .qa .qa-content {
+        padding-left: 310px;
+    }
+
+}
+
+@media (min-width: 826px) and (max-width: 970px) {
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social .qa-bonus-block-content,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-bonus-block-content {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz {
+        width: 100%;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block-controls {
+        margin-left: 19px;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-select-box {
+        width: 200px;
+    }
+
+}
+
+@media (min-width: 971px) and (max-width: 1460px) {
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social .qa-bonus-block-content,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-bonus-block-content {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz {
+        width: 50%;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block:last-child {
+        padding-left: 12px;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block-controls {
+        margin-top: 10px;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-select-box {
+        width: 200px;
+    }
+
+}
+
+@media screen and (min-width: 1152px) {
+    .qa .qa-block.qa-block-video {
+        padding: 0 10%;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    .tizer-block {
+        display: none;
+    }
+
+    #instruction-container {
+        position: relative;
+        padding-right: 324px;
+    }
+
+    .qa-instruction-nolive #instruction-container {
+        padding-right: 30px;
+    }
+
+    .qa.qa-instruction-live-wrap {
+        position: relative;
+        padding-right: 334px;
+    }
+
+}
+
+@media (min-width: 1366px) {
+    #instruction-container {
+        position: relative;
+        padding-right: 348px;
+    }
+}
+
+@media (min-width: 1461px) {
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social .qa-bonus-block-content,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-bonus-block-content {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-social,
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz {
+        width: 50%;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block:last-child {
+        padding-left: 12px;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block-controls {
+        margin-left: 19px;
+    }
+
+    .qa .qa-content .qa-bonus-blocks-container .qa-bonus-block.qa-quiz .qa-select-box {
+        width: 200px;
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    .qa .qa-content {
+        padding-left: 351px;
+    }
+}
+
+@media (min-width: 1600px) {
+    #instruction-container {
+        position: relative;
+        padding-right: 348px;
+    }
+}

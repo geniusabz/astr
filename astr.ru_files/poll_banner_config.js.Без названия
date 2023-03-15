@@ -1,0 +1,9 @@
+window.pollBannerConfig = {
+  enabled: false,
+  linkUrl: 'https://yandex.ru/poll/M3fLx41VngmJemSuj8G3SB',
+  bannerName: '20210617',
+  listOfUrlsToShow: [
+    '/DISABLED/city/projects/blago/**'
+  ],
+  devicesToShow: ['desktop'],
+};
